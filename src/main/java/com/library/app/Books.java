@@ -8,12 +8,11 @@ import java.util.ArrayList;
 public class Books {
 
 
-    ArrayList<Book> listBooks = new ArrayList<Book>();
+    ArrayList<Book> listBooks = new ArrayList<>();
 
     public void putBooks(Book book){
 
-        /* test commit */
-
+        this.listBooks.add(book);
 
 
     }

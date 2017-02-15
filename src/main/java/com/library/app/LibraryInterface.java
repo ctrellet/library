@@ -1,4 +1,4 @@
-package com.library.app;
+package main.java.com.library.app;
 
 /**
  * Created by christophe on 14/02/17.
