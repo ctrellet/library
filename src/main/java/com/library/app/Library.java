@@ -1,4 +1,4 @@
-package main.java.com.library.app;
+package com.library.app;
 
 import java.util.Calendar;
 import java.util.Date;
