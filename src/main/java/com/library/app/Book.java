@@ -3,14 +3,14 @@ package main.java.com.library.app;
 /**
  * Created by a on 14/02/17.
  */
-public class Book
+public class Book{
 
 
-        private char title;
+        private String title;
         private int pages;
 
 
-        public Book(char title, int pages) {
+        public Book(String title, int pages) {
             this.title = title;
             this.pages = pages;
         }
