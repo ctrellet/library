@@ -6,7 +6,6 @@ import java.util.ArrayList;
  * Created by a on 15/02/17.
  */
 
-private
 
 public class Dvds {
 

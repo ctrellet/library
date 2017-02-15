@@ -12,7 +12,7 @@ public class Cds {
 
     private ArrayList<Cd> putItems(ArrayList<Cd> newCds ) {
         listCds.addAll(newCds);
-        return listCds
+        return listCds;
     };
 
 
