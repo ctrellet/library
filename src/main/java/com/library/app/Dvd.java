@@ -6,16 +6,15 @@ package com.library.app;
 public class Dvd {
 
     private String title;
-    private int pages;
     private boolean troisd;
-    private int time;
-    private enum kind;
+    private int duration;
+    private Kind kind;
 
 
-    public Book(String title, boolean troisd, int time, enum kind) {
+    public Dvd(String title, boolean troisd, int duration, Kind kind) {
         this.title = title;
         this.troisd = troisd;
-        this.time = time;
+        this.duration = duration;
         this.kind = kind;
     }
 

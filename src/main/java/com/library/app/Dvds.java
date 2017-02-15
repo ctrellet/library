@@ -9,12 +9,12 @@ import java.util.ArrayList;
 
 public class Dvds {
 
-    ArrayList<Dvd> listDvds = new ArrayList<>();
+    private ArrayList<Dvd> listDvds = new ArrayList<>();
 
-    public void putItems(Dvd dvd){
+    public ArrayList<Dvd> putItems(ArrayList newDvds){
 
-        this.listDvds.add(dvd);
-
+        this.listDvds.addAll(newDvds);
+        return listDvds;
 
     }
 

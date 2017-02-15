@@ -6,15 +6,15 @@ import java.util.ArrayList;
  * Created by a on 14/02/17.
  */
 
+public class Books  implements LibraryInterface{
 
-public class Books {
 
+    private ArrayList<Book> listBooks = new ArrayList<Book>();
 
-    ArrayList<Book> listBooks = new ArrayList<>();
+    public ArrayList<Book> putItems(ArrayList  newBooks){
 
-    public void putItems(Book book){
-
-        this.listBooks.add(book);
+        this.listBooks.addAll(newBooks);
+        return listBooks;
 
 
     }
