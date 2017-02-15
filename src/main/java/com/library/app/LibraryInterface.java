@@ -5,5 +5,9 @@ package com.library.app;
  */
 public interface LibraryInterface {
 
-    ArrayList putItems(ArrayList);
+    public String putItems();
+
+
+
+
 }
