@@ -3,17 +3,17 @@ package com.library.app;
 /**
  * Created by a on 15/02/17.
  */
-public enum Kind {
+public enum Movie {
 
-    horror( "Horror"   ),
-    fun(    "Fun"   ),
-    action( "Action"   ),
-    musical("Musical"   );
+    HORROR( "Horror"   ),
+    FUN(    "Fun"   ),
+    ACTION( "Action"   ),
+    MUSICAL("Musical"   );
 
     private String name = "";
 
     //Constructeur
-    Kind(String name){
+    Movie(String name){
         this.name = name;
     }
 

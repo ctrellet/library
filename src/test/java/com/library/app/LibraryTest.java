@@ -13,8 +13,8 @@ import static org.junit.Assert.assertEquals;
  */
 public class LibraryTest {
 
-     @Test
-     public void baseTest() {
+    @Test
+    public void bookBaseTest() {
 
         //set
         Book book1 = new Book("Book1",10);
@@ -31,4 +31,44 @@ public class LibraryTest {
         //assert
         assertEquals(2,listSize);
     }
+
+    @Test
+    public void CdBaseTest() {
+
+        //set
+        Cd cd1 = new Cd("Cd1",10);
+        Cd cd2 = new Cd("Cd2",20);
+        ArrayList<Cd> myCds = new ArrayList<Cd>();
+        myCds.add(cd1);
+        myCds.add(cd2);
+        Library myLib = new Library();
+
+        //test
+        ArrayList<Cd> finalList = myLib.putCds(myCds);
+        int listSize =  finalList.size();
+
+        //assert
+        assertEquals(2,listSize);
+    }
+
+    @Test
+    public void DvdBaseTest() {
+
+        //set
+        Dvd dvd1 = new Dvd("Dvd1",10, true, Movie.ACTION);
+        Dvd dvd2 = new Dvd("Dvd2",20, false, Movie.FUN);
+        ArrayList<Dvd> myDvds = new ArrayList<Dvd>();
+        myDvds.add(dvd1);
+        myDvds.add(dvd2);
+        Library myLib = new Library();
+
+        //test
+        ArrayList<Dvd> finalList = myLib.putDvds(myDvds);
+        int listSize =  finalList.size();
+
+        //assert
+        assertEquals(2,listSize);
+    }
+
+
 }

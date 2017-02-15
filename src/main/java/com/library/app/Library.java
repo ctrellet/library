@@ -29,7 +29,7 @@ public class Library {
     public ArrayList<Book> putBooks(ArrayList<Book> newBooks){
         return this.books.putItems(newBooks);
     };
-    public ArrayList<Cd> putCDs(ArrayList<Cd> newCds){
+    public ArrayList<Cd> putCds(ArrayList<Cd> newCds){
         return this.cds.putItems(newCds);
     };
     public ArrayList<Dvd> putDvds(ArrayList<Dvd> newDvds){
