@@ -7,13 +7,58 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Unit test for simple App.
  */
 public class LibraryTest {
 
-    public int now;
+    // Test de non ouverture du magasin à 12 h
+    @Test
+    public void isOpenAt12() {
+
+        //set
+        Library myLib = new Library();
+
+        //assert
+        assertTrue(!myLib.isOpen(12));
+    }
+
+    // Test d'ouverture du magasin à 13 h
+    @Test
+    public void isOpenAt13() {
+
+        //set
+        Library myLib = new Library();
+
+        //assert
+        assertTrue(myLib.isOpen(13));
+    }
+
+    // Test d'ouverture du magasin à 19 h
+    @Test
+    public void isOpenAt19() {
+
+        //set
+        Library myLib = new Library();
+
+        //assert
+        assertTrue(myLib.isOpen(19));
+    }
+
+    // Test de non ouverture du magasin à 20 h
+    @Test
+    public void isOpenAt20() {
+
+        //set
+        Library myLib = new Library();
+
+        //assert
+        assertTrue(!myLib.isOpen(20));
+    }
+
+
 
     // Peut-on ajouter des livres
     @Test
@@ -113,46 +158,6 @@ public class LibraryTest {
         assertEquals(10,listSize);
     }
 
-    // Peut-on ajouter des items pendants les heures d'ouverture
-    @Test
-    public void openTimeTest() {
-
-        //set
-        now = 14;
-
-        Book book1 = new Book("Book1",10);
-        ArrayList<Book> myBooks = new ArrayList<Book>();
-        myBooks.add(book1);
-        Library myLib = new Library();
-
-        //test
-        ArrayList<Book> finalList = myLib.putBooks(myBooks);
-        int listSize =  finalList.size();
-
-        //assert
-        assertEquals(1,listSize);
-    }
-
-
-    // Peut-on ajouter des items pendants les heures de fermeture
-    @Test
-    public void closeTimeTest() {
-
-        //set
-        now = 10;
-
-        Book book1 = new Book("Book1",10);
-        ArrayList<Book> myBooks = new ArrayList<Book>();
-        myBooks.add(book1);
-        Library myLib = new Library();
-
-        //test
-        ArrayList<Book> finalList = myLib.putBooks(myBooks);
-        int listSize =  finalList.size();
-
-        //assert
-        assertEquals(0,listSize);
-    }
 
     // Peut-on ajouter un lot de DVDs qui ferait "déborder" le stock
     @Test
