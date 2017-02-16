@@ -13,6 +13,9 @@ import static org.junit.Assert.assertEquals;
  */
 public class LibraryTest {
 
+    public int now;
+
+    // Peut-on ajouter des livres
     @Test
     public void bookBaseTest() {
 
@@ -32,6 +35,7 @@ public class LibraryTest {
         assertEquals(2,listSize);
     }
 
+    // Peut-on ajouter des CDs
     @Test
     public void CdBaseTest() {
 
@@ -51,6 +55,7 @@ public class LibraryTest {
         assertEquals(2,listSize);
     }
 
+    // Peut-on ajouter des DVDs
     @Test
     public void DvdBaseTest() {
 
@@ -68,6 +73,145 @@ public class LibraryTest {
 
         //assert
         assertEquals(2,listSize);
+    }
+
+    // Peut-on ajouter "beaucoups" de livres
+    @Test
+    public void ManyBooksTest() {
+
+        //set
+        Book book1, book2, book3, book4, book5;
+        ArrayList<Book> myBooks = new ArrayList<Book>();
+        book1 = new Book("Book1",10);
+        book2 = new Book("Book2",20);
+        book3 = new Book("Book3",30);
+        book4 = new Book("Book4",40);
+        book5 = new Book("Book5",50);
+        myBooks.add(book1);
+        myBooks.add(book2);
+        myBooks.add(book3);
+        myBooks.add(book4);
+        myBooks.add(book5);
+        book1 = new Book("Book6",10);
+        book2 = new Book("Book7",20);
+        book3 = new Book("Book8",30);
+        book4 = new Book("Book9",40);
+        book5 = new Book("Book10",50);
+        myBooks.add(book1);
+        myBooks.add(book2);
+        myBooks.add(book3);
+        myBooks.add(book4);
+        myBooks.add(book5);
+
+        Library myLib = new Library();
+
+        //test
+        ArrayList<Book> finalList = myLib.putBooks(myBooks);
+        int listSize =  finalList.size();
+
+        //assert
+        assertEquals(10,listSize);
+    }
+
+    // Peut-on ajouter des items pendants les heures d'ouverture
+    @Test
+    public void openTimeTest() {
+
+        //set
+        now = 14;
+
+        Book book1 = new Book("Book1",10);
+        ArrayList<Book> myBooks = new ArrayList<Book>();
+        myBooks.add(book1);
+        Library myLib = new Library();
+
+        //test
+        ArrayList<Book> finalList = myLib.putBooks(myBooks);
+        int listSize =  finalList.size();
+
+        //assert
+        assertEquals(1,listSize);
+    }
+
+
+    // Peut-on ajouter des items pendants les heures de fermeture
+    @Test
+    public void closeTimeTest() {
+
+        //set
+        now = 10;
+
+        Book book1 = new Book("Book1",10);
+        ArrayList<Book> myBooks = new ArrayList<Book>();
+        myBooks.add(book1);
+        Library myLib = new Library();
+
+        //test
+        ArrayList<Book> finalList = myLib.putBooks(myBooks);
+        int listSize =  finalList.size();
+
+        //assert
+        assertEquals(0,listSize);
+    }
+
+    // Peut-on ajouter un lot de DVDs qui ferait "déborder" le stock
+    @Test
+    public void toMuchDvdTest() {
+
+        //set
+        Dvd dvd1,dvd2;
+        ArrayList<Dvd> myDvdsList1, myDvdsList2, finalList;
+
+        dvd1 = new Dvd("Dvd1",10, true, Movie.ACTION);
+        dvd2 = new Dvd("Dvd2",20, false, Movie.FUN);
+        myDvdsList1 = new ArrayList<Dvd>();
+        myDvdsList1.add(dvd1);
+        myDvdsList1.add(dvd2);
+
+        dvd1 = new Dvd("Dvd3",30, true, Movie.HORROR);
+        dvd2 = new Dvd("Dvd4",40, false, Movie.MUSICAL);
+        myDvdsList2 = new ArrayList<Dvd>();
+        myDvdsList2.add(dvd1);
+        myDvdsList2.add(dvd2);
+
+        Library myLib = new Library();
+
+        //test
+        finalList = myLib.putDvds(myDvdsList1);
+        finalList = myLib.putDvds(myDvdsList2);
+        int listSize =  finalList.size();
+
+        //assert
+        assertEquals(2,listSize);
+    }
+
+    // Peut-on ajouter un lot de DVDs qui dont l'un est déjà en stock
+    @Test
+    public void duplicateDvdTest() {
+
+        //set
+        Dvd dvd1,dvd2;
+        ArrayList<Dvd> myDvdsList1, myDvdsList2, finalList;
+
+        dvd1 = new Dvd("Dvd1",10, true, Movie.ACTION);
+        myDvdsList1 = new ArrayList<Dvd>();
+        myDvdsList1.add(dvd1);
+
+        dvd1 = new Dvd("Dvd3",30, true, Movie.HORROR);
+        dvd2 = new Dvd("Dvd1",10, true, Movie.ACTION);
+        myDvdsList2 = new ArrayList<Dvd>();
+        myDvdsList2.add(dvd1);
+        myDvdsList2.add(dvd2);
+
+        Library myLib = new Library();
+
+        //test
+        finalList = myLib.putDvds(myDvdsList1);
+        finalList = myLib.putDvds(myDvdsList2);
+        int listSize =  finalList.size();
+
+        //assert
+        assertEquals(1,listSize);
     }
 
 
