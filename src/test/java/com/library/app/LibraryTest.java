@@ -1,20 +1,16 @@
 package com.library.app;
 
-
-
 import org.junit.Test;
-
 import java.util.ArrayList;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Unit test for simple App.
+ * Tests unitaires de la librairie
  */
 public class LibraryTest {
 
-    // Test de non ouverture du magasin à 12 h
+    // Test de non ouverture du magasin à 12 h => NON
     @Test
     public void isOpenAt12() {
 
@@ -25,7 +21,7 @@ public class LibraryTest {
         assertTrue(!myLib.isOpen(12));
     }
 
-    // Test d'ouverture du magasin à 13 h
+    // Test d'ouverture du magasin à 13 h => OUI
     @Test
     public void isOpenAt13() {
 
@@ -36,7 +32,7 @@ public class LibraryTest {
         assertTrue(myLib.isOpen(13));
     }
 
-    // Test d'ouverture du magasin à 19 h
+    // Test d'ouverture du magasin à 19 h => OUI
     @Test
     public void isOpenAt19() {
 
@@ -47,7 +43,7 @@ public class LibraryTest {
         assertTrue(myLib.isOpen(19));
     }
 
-    // Test de non ouverture du magasin à 20 h
+    // Test de non ouverture du magasin à 20 h =>  NON
     @Test
     public void isOpenAt20() {
 
@@ -60,7 +56,7 @@ public class LibraryTest {
 
 
 
-    // Peut-on ajouter des livres
+    // Peut-on ajouter des livres => OUI
     @Test
     public void bookBaseTest() {
 
@@ -80,7 +76,7 @@ public class LibraryTest {
         assertEquals(2,listSize);
     }
 
-    // Peut-on ajouter des CDs
+    // Peut-on ajouter des CDs => OUI
     @Test
     public void CdBaseTest() {
 
@@ -100,7 +96,7 @@ public class LibraryTest {
         assertEquals(2,listSize);
     }
 
-    // Peut-on ajouter des DVDs
+    // Peut-on ajouter des DVDs => OUI
     @Test
     public void DvdBaseTest() {
 
@@ -120,7 +116,7 @@ public class LibraryTest {
         assertEquals(2,listSize);
     }
 
-    // Peut-on ajouter "beaucoups" de livres
+    // Peut-on ajouter "beaucoups" de livres => OUI
     @Test
     public void ManyBooksTest() {
 
@@ -159,7 +155,7 @@ public class LibraryTest {
     }
 
 
-    // Peut-on ajouter un lot de DVDs qui ferait "déborder" le stock
+    // Peut-on ajouter un lot de DVDs qui ferait "déborder" le stock => NON
     @Test
     public void toMuchDvdTest() {
 
@@ -190,23 +186,23 @@ public class LibraryTest {
         assertEquals(2,listSize);
     }
 
-    // Peut-on ajouter un lot de DVDs qui dont l'un est déjà en stock
+    // Peut-on ajouter un lot de DVDs qui dont l'un est déjà en stock  => NON
     @Test
     public void duplicateDvdTest() {
 
         //set
-        Dvd dvd1,dvd2;
+        Dvd dvd1,dvd2,dvd3;
         ArrayList<Dvd> myDvdsList1, myDvdsList2, finalList;
 
         dvd1 = new Dvd("Dvd1",10, true, Movie.ACTION);
         myDvdsList1 = new ArrayList<Dvd>();
         myDvdsList1.add(dvd1);
 
-        dvd1 = new Dvd("Dvd3",30, true, Movie.HORROR);
-        dvd2 = new Dvd("Dvd1",10, true, Movie.ACTION);
+        dvd2 = new Dvd("Dvd2",30, true, Movie.HORROR);
+        dvd3 = new Dvd("DVD1",20, true, Movie.FUN);
         myDvdsList2 = new ArrayList<Dvd>();
-        myDvdsList2.add(dvd1);
         myDvdsList2.add(dvd2);
+        myDvdsList2.add(dvd3);
 
         Library myLib = new Library();
 
@@ -219,5 +215,33 @@ public class LibraryTest {
         assertEquals(1,listSize);
     }
 
+    // Peut-on ajouter un lot de DVDs différents => OUI
+    @Test
+    public void noDuplicateDvdTest() {
+
+        //set
+        Dvd dvd1,dvd2,dvd3;
+        ArrayList<Dvd> myDvdsList1, myDvdsList2, finalList;
+
+        dvd1 = new Dvd("Dvd1",10, true, Movie.ACTION);
+        myDvdsList1 = new ArrayList<Dvd>();
+        myDvdsList1.add(dvd1);
+
+        dvd2 = new Dvd("Dvd2",30, true, Movie.HORROR);
+        dvd3 = new Dvd("Dvd3",20, true, Movie.MUSICAL);
+        myDvdsList2 = new ArrayList<Dvd>();
+        myDvdsList2.add(dvd2);
+        myDvdsList2.add(dvd3);
+
+        Library myLib = new Library();
+
+        //test
+        finalList = myLib.putDvds(myDvdsList1);
+        finalList = myLib.putDvds(myDvdsList2);
+        int listSize =  finalList.size();
+
+        //assert
+        assertEquals(3,listSize);
+    }
 
 }

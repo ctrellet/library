@@ -18,7 +18,6 @@ public class Library {
 
     private final int OPEN_HOUR = 13;
     private final int CLOSE_HOUR = 19;
-    protected final int MAX_DVDS = 3;
 
 
     public boolean isOpen(int hour){
