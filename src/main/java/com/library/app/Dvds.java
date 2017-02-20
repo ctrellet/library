@@ -15,13 +15,24 @@ public class Dvds {
 
     public ArrayList<Dvd> putItems(ArrayList<Dvd> newDvds) {
         boolean okForAppend = true;
-        if (this.listDvds.size() + newDvds.size() > MAX_DVDS){
+        if (newDvds.size()==0||(this.listDvds.size() + newDvds.size() > MAX_DVDS)){
             okForAppend = false;
         }else{
             if(listDvds.size()!=0) {
+                ArrayList<Dvd> uniqueDvdInImportedList = new ArrayList<Dvd>();
                 for (Dvd newDvd : newDvds) {
+
+                    // On test si le dvd à ajouter est en doublon dans la liste à importer
+                    if (uniqueDvdInImportedList.contains(newDvd)) {
+                        okForAppend = false;
+                        break;
+                    }
+                    uniqueDvdInImportedList.add(newDvd);
+
+                    // On test si le dvd à ajouter est en doublon dans la liste existante
                     if (listDvds.contains(newDvd)) {
                         okForAppend = false;
+                        break;
                     }
                 }
             }

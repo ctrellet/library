@@ -188,7 +188,7 @@ public class LibraryTest {
 
     // Peut-on ajouter un lot de DVDs qui dont l'un est déjà en stock  => NON
     @Test
-    public void duplicateDvdTest() {
+    public void duplicateDvdInFinalListTest() {
 
         //set
         Dvd dvd1,dvd2,dvd3;
@@ -200,6 +200,35 @@ public class LibraryTest {
 
         dvd2 = new Dvd("Dvd2",30, true, Movie.HORROR);
         dvd3 = new Dvd("DVD1",20, true, Movie.FUN);
+        myDvdsList2 = new ArrayList<Dvd>();
+        myDvdsList2.add(dvd2);
+        myDvdsList2.add(dvd3);
+
+        Library myLib = new Library();
+
+        //test
+        finalList = myLib.putDvds(myDvdsList1);
+        finalList = myLib.putDvds(myDvdsList2);
+        int listSize =  finalList.size();
+
+        //assert
+        assertEquals(1,listSize);
+    }
+
+    // Peut-on ajouter un lot de DVDs qui dont l'un est déjà en stock  => NON
+    @Test
+    public void duplicateDvdInImportedListTest() {
+
+        //set
+        Dvd dvd1,dvd2,dvd3;
+        ArrayList<Dvd> myDvdsList1, myDvdsList2, finalList;
+
+        dvd1 = new Dvd("Dvd1",10, true, Movie.ACTION);
+        myDvdsList1 = new ArrayList<Dvd>();
+        myDvdsList1.add(dvd1);
+
+        dvd2 = new Dvd("Dvd2",20, true, Movie.FUN);
+        dvd3 = new Dvd("Dvd2",30, true, Movie.HORROR);
         myDvdsList2 = new ArrayList<Dvd>();
         myDvdsList2.add(dvd2);
         myDvdsList2.add(dvd3);
