@@ -1,6 +1,7 @@
 package com.library.app;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Created by a on 15/02/17.
@@ -15,6 +16,8 @@ public class Dvds {
 
     public ArrayList<Dvd> putItems(ArrayList<Dvd> newDvds) {
         boolean okForAppend = true;
+        HashSet<Dvd> globalListOfUniqueDvds = new HashSet<>();
+
         if (newDvds.size()==0||(this.listDvds.size() + newDvds.size() > MAX_DVDS)){
             okForAppend = false;
         }else{
